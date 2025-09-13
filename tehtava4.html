@@ -2,6 +2,12 @@
 <html>
   <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+
   <title>Kilpailuautot</title>
   <style>
     :root {
@@ -21,17 +27,98 @@
       font-family: Arial, sans-serif;
       background-color: var(--bg);
       color: var(--text);
+      font-family: 'RobotoLocal', Arial, sans-serif;
+
     }
+
+    @font-face {
+      font-family: 'RobotoLocal';
+      src: url('fonts/myfont.ttf') format('truetype-variations');
+      font-weight: 100 900; /* variable supports range */
+      font-style: normal;
+  }
+
+  .pill-button {
+  background: var(--secondary);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 999px; /* tekee pillimäisen */
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+.pill-button:hover {
+  background: darkred;
+  transform: scale(1.05); /* pieni hover-efekti */
+}
+
+.features {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  background-color: rgba(0, 0, 0, 0.744);
+
+}
+.feature {
+  background: blue;
+  color: white;
+  padding: 10px 25px;
+  border-radius: 20px;
+  font-weight: bold;
+  text-align: center;
+  transition: transform 0.3s, background 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.feature:hover {
+  transform: translateY(-10px);
+  background: var(--secondary);
+}
+
+.features-section {
+  text-align: center;
+  padding: 40px 20px;
+  background: rgba(0, 0, 0, 0.879);
+  
+}
+
+.features-section h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: white;
+}
+
+.features-title {
+  font-size: 2em;
+  margin-bottom: 20px;
+  color: var(--primary);
+}
+
+
+
+
+
+    /* KAIKKI kuvat skaalautuvat säiliönsä leveyteen */
+    img { 
+        max-width: 100%;     
+        height: auto;
+    }
+
 
     nav {
       background-color: var(--primary);
       padding: 20px 0;
+      
     }
 
     h1 {
       color: white;
       text-align: center;
       margin-bottom: 10px;
+      font-family: 'OmaFontti', sans-serif;
       
     }
 
@@ -39,36 +126,54 @@
       list-style: none;
       display: flex;
       justify-content: center;
-      gap: 20px;
+      gap: 30px;
+      margin: 0;
+      padding: 0;
     }
 
     ul li a {
       color: white;
       text-decoration: none;
       font-weight: bold;
+      font-size: 18px;
+  transition: color 0.3s;
     }
     ul li a:hover {
       color: var(--secondary);
     }
 
-    .hero {
-      background: lightblue url("background.jpg") no-repeat center center;
-      background-size: cover;
-      display: flex;
-      flex-direction: column;  
-      justify-content: center;  
-      align-items: center;
-      text-align: center;
-      padding: 60px 20px;
-      color: white;
-      position: relative;
-      z-index: 1;
-      min-height: 60vh;
-    }
-    .hero button {
-      margin-top: 20px; 
-      padding: 10px 20px; 
-    }
+.hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; /* teksti + nappi allekkain */
+  min-height: 60vh;
+  text-align: center;
+  background: url("pic.jpg") no-repeat center center;
+  background-size: cover;
+  color: white;
+}
+
+.hero h2 {
+  font-size: clamp(22px, 3vw, 42px);
+}
+
+.hero button {
+  margin-top: 20px;
+  padding: 12px 25px;
+  border-radius: 9999px;
+  border: none;
+  background: blue;
+  color: white;
+  cursor: pointer;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.hero button:hover {
+  transform: scale(1.1) rotate(-2deg); /* 2D efekti */
+  background: var(--primary);
+}
+
 
     .about {
       padding: 40px 20px;
@@ -78,6 +183,22 @@
       position: relative;
       z-index: 1;
     }
+
+    .about-container {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.about-container img {
+  width: 30%;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+.about-container img:hover {
+  transform: scale(1.05) rotate(2deg);
+}
     .about h2 {
       font-size: 2em;
       margin-bottom: 20px;
@@ -85,8 +206,10 @@
 
     .about-text {
       float: left;
-      width: 100%;
+      width: 65%;
       line-height: 1.6;
+      padding-left: 35px;
+      flex: 1;
     }
 
     .about-side {
@@ -99,24 +222,24 @@
 
     .image-section {
       position: relative;
+      width: 100%;
       height: 0;
       background: transparent;
     }
 
     .car-image {
       position: absolute;
-      top: -300px; 
-      left: 80%;
+      top: -350px; 
+      left: 70%;
       width: 200px;
       z-index: 5;
     }
-
-    @media (max-width: 768px) {
-      .car-image {
-        left: 60%;
-        width: 120px;
-        top: -100px;
-      }
+    .car-image.second-car {
+    position: absolute;
+    top: -250px;
+    left: 30%;
+    width: 180px;
+    z-index: 4;
     }
 
     input {
@@ -208,6 +331,70 @@
     display: block;
     width: 100%;
     }
+
+    @media (max-width: 768px) {
+  .about-container {
+    flex-direction: column;
+    text-align: center;
+  }
+  .about-container img {
+    width: 80%;
+  }
+  .hero {
+    min-height: 40vh;
+    background-image: url("img.jpg"); /* eri kuva mobiilille */
+  }
+}
+
+    /* Tabletit, max 1024px */
+@media (max-width: 1024px) {
+  .about {
+    padding: 20px;
+  }
+
+  .car-image {
+    width: 150px;
+    left: 70%;
+  }
+}
+
+/* Pienet tabletit ja isot puhelimet, max 768px */
+@media (max-width: 768px) {
+  .car-image {
+    left: 60%;
+    width: 120px;
+    top: -100px;
+    float: none;
+    display: block;
+    margin: 10px auto; /* keskitys */
+  }
+
+  
+
+  nav ul {
+    gap: 15px;
+  }
+}
+
+
+/* Mobiilit, max 480px */
+@media (max-width: 480px) {
+  nav ul {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .hero {
+    padding: 40px 10px;
+  }
+
+  .hero h2 {
+    font-size: 20px;
+  }
+}
+
+
+
   </style>
 </head>
 <body>
@@ -217,22 +404,42 @@
       <li><a href="#">Etusivu</a></li>
       <li><a href="#">Lisää meistä</a></li>
       <li><a href="#">Yhteystiedot</a></li>
+
     </ul>
+    
   </nav>
+  <section class="features-section">
+    <h2>Meidän autot</h2>
+    <div class="features">
+  <div class="feature">🚗 Nopea</div>
+  <div class="feature">⚡ Tehokas</div>
+  <div class="feature">🔥 Tyylikäs</div>
+  <div class="feature">
+    <img src="fuel-tank-svgrepo-com.svg" alt="Polttoaine" width="24" style="margin-bottom:5px;">
+    Polttoaine
+
+  </div>
+  <div class="feature"><i class="fa-solid fa-car"></i> Auto</div>
+  </section>
 
   <section class="hero">
+    <div class="hero-content">
     <h2>Tervetuloa nopeuden maailmaan!</h2>
     <button id="openDialog">Kirjaudu</button>
+    </div>
   </section>
 
   <section class="about">
-    <h2>Lisää meistä</h2>
+    
+    <h3>Lisää meistä</h3>
+    <img src="image.jpg" alt="Toinen kilpa-auto" style="margin-right:10px; margin-top:10px; width:25%; float:left;">
     <div class="about-text">
       <p>
         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ex, odio in aut ipsam officia delectus quaerat repudiandae aspernatur ipsa et facere repellendus quos mollitia corrupti maiores aliquid obcaecati fuga? Maxime?
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex autem quidem vel quia repellat vitae vero quibusdam ut, exercitationem facilis aperiam aut odit saepe quaerat dolore fuga nostrum natus? Hic?
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis excepturi dolorum autem quisquam! Optio molestias quibusdam vel necessitatibus blanditiis ut quia omnis non nostrum provident quod earum, veritatis hic deserunt?
       </p>
+    </div>
     </div>
   </section>
   <section class="image-section">
@@ -255,14 +462,20 @@
         <menu>
           <button id="closeDialog">Peruuta</button>
           <button type="submit">Kirjaudu</button>
+          
         </menu>
       </form>
 
   </dialog>
 
-  
-    <img src="img.png.lnk" alt="Kilpa-auto" class="car-image">
-  </section>
+    <div class="car-container">
+        <img src="img.jpg" alt="Kilpa-auto" class="car-image">
+    </div>
+    <div class="car-container">
+    
+  </div>
+
+</section>
 
   <footer>Copyright</footer>
   <script>
@@ -271,7 +484,7 @@
     document.getElementById('closeDialog').onclick = (e) => {
       e.preventDefault();
       dialog.close();
-    };
+    }
   </script>
 
 
