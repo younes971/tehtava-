@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+
+  <title>Kilpailuautot</title>
+  <style>
+    :root {
+      --primary:#004aad;
+      --secondary: #ff3131;
+      --bg: #f5f5f5;
+      --text: #111;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'RobotoLocal', Arial, sans-serif;
+
+    }
+
+    @font-face {
+      font-family: 'RobotoLocal';
+      src: url('fonts/myfont.ttf') format('truetype-variations');
+      font-weight: 100 900; 
+      font-style: normal;
+  }
+
+  .pill-button {
+      background: var(--secondary);
+      color: white;
+      padding: 12px 24px;
+      border-radius: 999px; 
+      border: none;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: transform 0.3s ease, background 0.3s ease;
+}
+.pill-button:hover {
+      background: darkred;
+      transform: scale(1.05); 
+}
+
+.features {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+
+}
+.feature {
+      background: blue;
+      color: white;
+      padding: 10px 25px;
+      border-radius: 20px;
+      font-weight: bold;
+      text-align: center;
+      transition: transform 0.3s, background 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+}
+.feature:hover {
+      transform: translateY(-10px);
+      background: var(--secondary);
+}
+
+.features-section {
+      text-align: center;
+      padding: 40px 20px;
+      background: rgba(0, 0, 0, 0.879);
+  
+}
+
+.cars-section {
+      padding: 40px 20px;
+      background: grey;   
+      color: var(--text);
+      text-align: center;
+}
+
+.cars-section h2 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      color: black;
+}
+
+.cars-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 10px;
+}
+
+.car-card {
+      background: beige;
+      border-radius: 14px;
+      padding: 16px;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.car-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 18px 36px rgba(0,0,0,0.12);
+}
+
+.car-card img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 12px;
+}
+
+.car-card h3 {
+      margin: 6px 0;
+      color: var(--primary);
+      font-size: 1.05rem;
+}
+
+.car-card p {
+      margin: 4px 0;
+      color: #333;
+      font-size: 0.95rem;
+      font-weight: 550;
+}
+
+.car-card .price {
+      margin-top: 10px;
+      font-weight: 700;
+      color: var(--secondary);
+}
+
+.car-card button {
+      margin-top: 12px;
+      align-self: flex-start;
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: transform .18s ease, background .18s ease;
+}
+.car-card button:hover {
+      transform: translateY(-4px);
+      background: var(--secondary);
+}
+
+@media (max-width: 480px) {
+  .cars-grid {
+      grid-template-columns: 1fr;
+  }
+  .car-card img {
+      height: 140px;
+  }
+}
+
+
+.features-section h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: white;
+}
+
+.features-title {
+      font-size: 2em;
+      margin-bottom: 20px;
+      color: var(--primary);
+}
+
+
+    img { 
+      max-width: 100%;     
+      height: auto;
+    }
+
+
+    nav {
+      background-color: var(--primary);
+      padding: 20px 0;
+      
+    }
+
+    h1 {
+      color: white;
+      text-align: center;
+      margin-bottom: 10px;
+      font-family: 'OmaFontti', sans-serif;
+      
+    }
+
+    ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin: 0;
+      padding: 0;
+    }
+
+    ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 18px;
+      transition: color 0.3s;
+    }
+    ul li a:hover {
+      color: var(--secondary);
+    }
+
+.hero {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column; 
+      min-height: 60vh;
+      text-align: center;
+      background: url("pic.jpg") no-repeat center center;
+      background-size: cover;
+      color: white;
+}
+
+.hero h2 {
+      font-size: clamp(22px, 3vw, 42px);
+}
+
+.hero button {
+      margin-top: 20px;
+      padding: 12px 25px;
+      border-radius: 9999px;
+      border: none;
+      background: blue;
+      color: white;
+      cursor: pointer;
+      transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.hero button:hover {
+      transform: scale(1.1) rotate(-2deg); 
+      background: var(--primary);
+}
+
+
+.about {
+      padding: 40px 20px;
+      background-color: rgba(0, 0, 0, 0.7); 
+      color: white;
+      overflow: hidden;
+      position: relative;
+      z-index: 1;
+    }
+
+.about-container {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+}
+
+.about-container img {
+      width: 30%;
+      border-radius: 10px;
+      transition: transform 0.3s ease;
+}
+
+.about-container img:hover {
+      transform: scale(1.05) rotate(2deg);
+}
+  .about h1 {
+      font-size: 2.5em;   
+      margin-bottom: 20px;
+      color: white;
+}
+
+  .about h2 {
+      font-size: 2em;     
+      margin-bottom: 18px;
+      color: white;
+}
+
+  .about h3 {
+      font-size: 1.8em;  
+      margin-bottom: 15px;
+      color: white;
+}
+
+  .about-text {
+      float: left;
+      width: 65%;
+      line-height: 1.6;
+      padding-left: 35px;
+      flex: 1;
+    }
+
+  .about-side {
+      float: right;
+      width: 30%;
+      background: white;
+      color: black;
+      padding: 10px;
+    }
+
+  .image-section {
+      position: relative;
+      width: 100%;
+      height: 0;
+      background: transparent;
+    }
+
+  .car-image {
+      position: absolute;
+      top: -350px; 
+      left: 80%;
+      width: 200px;
+      z-index: 5;
+    }
+  .car-image.second-car {
+      position: absolute;
+      top: -250px;
+      left: 30%;
+      width: 180px;
+      z-index: 4;
+    }
+
+    input {
+      transition: border-left 0.3s ease; 
+      border-left: 5px solid transparent; 
+  }
+
+    input:invalid {
+      border-left: 5px solid red;
+  }
+
+    input:valid {
+      border-left: 5px solid green;
+  }
+
+    dialog {
+      border: none;
+      border-radius: 10px;
+      padding: 20px;
+      max-width: 400px;
+      width: 90%;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    dialog::backdrop {
+      background: rgba(0,0,0,0.5);
+    }
+    form label {
+      display: block;
+      margin: 10px 0 5px;
+    }
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      border: 2px solid #ccc;
+      border-radius: 5px;
+      transition: border 0.3s;
+    }
+    input:valid {
+      border-color: green;
+    }
+    input:invalid {
+      border-color: red;
+    }
+    button {
+      background: var(--primary);
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: var(--secondary);
+    }
+
+    footer {
+      background: black;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      width: 100%;
+      clear: both;
+    }
+
+    dialog form {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    dialog input {
+      width: 100%;   
+      padding: 8px;
+      margin-bottom: 12px;
+      border: 2px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box; 
+    }
+    dialog label {
+      display: block;
+      width: 100%;
+    }
+    dialog input {
+      display: block;
+      width: 100%;
+    }
+
+    @media (max-width: 768px) {
+  .about-container {
+      flex-direction: column;
+      text-align: center;
+  }
+  .about-container img {
+      width: 80%;
+  }
+  .hero {
+      min-height: 40vh;
+      background-image: url("img.jpg"); 
+  }
+}
+
+@media (max-width: 1024px) {
+  .about {
+    padding: 20px;
+  }
+
+  .car-image {
+    width: 150px;
+    left: 70%;
+  }
+}
+
+@media (max-width: 768px) {
+  .car-image {
+    left: 60%;
+    width: 120px;
+    top: -100px;
+    float: none;
+    display: block;
+    margin: 10px auto; 
+  }
+
+  nav ul {
+    gap: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  nav ul {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .hero {
+    padding: 40px 10px;
+  }
+
+  .hero h2 {
+    font-size: 20px;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <nav>
+    <h1>Kilpailuautot</h1>
+    <ul>
+      <li><a href="#">Etusivu</a></li>
+      <li><a href="#">Lisää meistä</a></li>
+      <li><a href="#">Yhteystiedot</a></li>
+
+    </ul>
+    
+  </nav>
+  <section class="features-section">
+    <h2>Meidän autot</h2>
+    <div class="features">
+  <div class="feature">🚗 Nopea</div>
+  <div class="feature">⚡ Tehokas</div>
+  <div class="feature">🔥 Tyylikäs</div>
+  <div class="feature">
+    <img src="fuel-tank-svgrepo-com.svg" alt="Polttoaine" width="24" style="margin-bottom:5px;">
+    Polttoaine
+
+  </div>
+  <div class="feature"><i class="fa-solid fa-car"></i> Auto</div>
+  </div>
+  </section>
+
+  <section class="hero">
+    <div class="hero-content">
+    <h2>Tervetuloa nopeuden maailmaan!</h2>
+    <button id="openDialog">Kirjaudu</button>
+    </div>
+  </section>
+
+  <section class="cars-section">
+  <h2>Autovalikoima</h2>
+  <div class="cars-grid">
+    <div class="car-card">
+      <img src="Ferrari F8.jpg" alt="Kilpa-auto 1">
+      <h3>Ferrari F8</h3>
+      <p>V8-moottori, 710 hp</p>
+      <p class="price">Hinta: 250 000 €</p>
+      <button class="pill-button">Katso tiedot</button>
+    </div>
+
+    <div class="car-card">
+      <img src="Lambo.jpg" alt="Kilpa-auto 2">
+      <h3>Lamborghini Huracán</h3>
+      <p>V10, 640 hp</p>
+      <p class="price">Hinta: 270 000 €</p>
+      <button class="pill-button">Katso tiedot</button>
+    </div>
+
+    <div class="car-card">
+      <img src="porsche.jpg" alt="Kilpa-auto 3">
+      <h3>Porsche 911 GT3</h3>
+      <p>Flat-6, 510 hp</p>
+      <p class="price">Hinta: 180 000 €</p>
+      <button class="pill-button">Katso tiedot</button>
+    </div>
+
+    <div class="car-card">
+      <img src="Ford-GT.jpg" alt="Kilpa-auto 4">
+      <h3>Ford GT</h3>
+      <p>V6 EcoBoost, 660 hp</p>
+      <p class="price">Hinta: 500 000 €</p>
+      <button class="pill-button">Katso tiedot</button>
+    </div>
+  </div>
+</section>
+
+
+  <section class="about">
+    
+    <h3>Lisää meistä</h3>
+    <img src="image.jpg" alt="Toinen kilpa-auto" style="margin-right:10px; margin-top:10px; width:25%; float:left;">
+    <div class="about-text">
+      <p>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ex, odio in aut ipsam officia delectus quaerat repudiandae aspernatur ipsa et facere repellendus quos mollitia corrupti maiores aliquid obcaecati fuga? Maxime?
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex autem quidem vel quia repellat vitae vero quibusdam ut, exercitationem facilis aperiam aut odit saepe quaerat dolore fuga nostrum natus? Hic?
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis excepturi dolorum autem quisquam! Optio molestias quibusdam vel necessitatibus blanditiis ut quia omnis non nostrum provident quod earum, veritatis hic deserunt?
+      </p>
+    </div>
+    </div>
+  </section>
+  <section class="image-section">
+
+  <dialog id="loginDialog">
+      <form method="dialog">
+        <h3>Kirjaudu sisään</h3>
+
+        <label for="name">Nimi</label>
+        <input type="text" id="name" name="name" required minlength="3">
+
+        <label for="email">Sähköposti osoite (@metropolia.fi):</label>
+        <input type="email" id="email" name="email" required pattern=".+@metropolia\.fi">
+
+        <label for="password">Salasana</label>
+        <input type="password" id="password" name="password" required
+              pattern="(?=.*[A-Z])(?=.*\d).{6,}"
+              title="Vähintään 6 merkkiä, 1 iso kirjain ja 1 numero">
+
+        <menu>
+          <button id="closeDialog">Peruuta</button>
+          <button type="submit">Kirjaudu</button>
+          
+        </menu>
+      </form>
+
+  </dialog>
+
+    <div class="car-container">
+        <img src="foto.jpg" alt="Kilpa-auto" class="car-image">
+    </div>
+    <div class="car-container">
+    
+  </div>
+
+</section>
+
+  <footer>Copyright</footer>
+  <script>
+    const dialog = document.getElementById('loginDialog');
+    document.getElementById('openDialog').onclick = () => dialog.showModal();
+    document.getElementById('closeDialog').onclick = (e) => {
+      e.preventDefault();
+      dialog.close();
+    }
+  </script>
+
+</body>
+</html>
